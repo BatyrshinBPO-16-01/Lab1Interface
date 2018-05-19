@@ -22,6 +22,8 @@ private slots:
 
     void on_Arrays_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Base *window1;

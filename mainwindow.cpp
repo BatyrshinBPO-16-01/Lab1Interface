@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QApplication>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,4 +30,13 @@ void MainWindow::on_Arrays_clicked()
     window2 = new Arrays(this);
     connect(window2, &Arrays::firstWindow, this, &MainWindow::show);
     window2->show();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QMessageBox::StandardButton reply=QMessageBox::question(this, "Выход", "Вы действительно хотите выйти?", QMessageBox::Yes| QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        QApplication::quit();
+    }
 }
