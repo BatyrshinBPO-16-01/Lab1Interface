@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "base.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,16 +17,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_radioButton_clicked();
-
-    void on_radioButton_3_clicked();
-
-    void on_radioButton_4_clicked();
-
-    void on_radioButton_5_clicked();
+    void on_BaseOfData_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Base *window1;
 };
 
 #endif // MAINWINDOW_H
