@@ -26,12 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    base.cpp
+    base.cpp \
+    arrays.cpp
 
 HEADERS += \
         mainwindow.h \
-    base.h
+    base.h \
+    arrays.h
 
 FORMS += \
         mainwindow.ui \
-    base.ui
+    base.ui \
+    arrays.ui

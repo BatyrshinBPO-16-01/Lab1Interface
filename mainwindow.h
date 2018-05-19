@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "base.h"
+#include "arrays.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,9 +20,12 @@ public:
 private slots:
     void on_BaseOfData_clicked();
 
+    void on_Arrays_clicked();
+
 private:
     Ui::MainWindow *ui;
     Base *window1;
+    Arrays *window2;
 };
 
 #endif // MAINWINDOW_H

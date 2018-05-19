@@ -15,6 +15,12 @@ public:
     explicit Base(QWidget *parent = 0);
     ~Base();
 
+private slots:
+    void on_pushButton_clicked();
+
+signals:
+    void firstWindow();
+
 private:
     Ui::Base *ui;
 };
