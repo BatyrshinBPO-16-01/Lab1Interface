@@ -19,7 +19,7 @@ signals:
     void firstWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_Prev_clicked();
 
 private:
     Ui::Arrays *ui;

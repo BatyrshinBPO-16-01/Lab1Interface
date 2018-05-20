@@ -45,13 +45,13 @@
        <property name="title">
         <string>Сортировки</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>20</x>
           <y>20</y>
           <width>141</width>
-          <height>101</height>
+          <height>112</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -117,7 +117,7 @@
        <property name="title">
         <string>Случаи</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -219,7 +219,7 @@
     </layout>
    </item>
    <item row="3" column="0">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="Prev">
      <property name="font">
       <font>
        <pointsize>12</pointsize>

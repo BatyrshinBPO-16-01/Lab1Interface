@@ -16,7 +16,7 @@ public:
     ~Base();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_Prev_clicked();
 
 signals:
     void firstWindow();

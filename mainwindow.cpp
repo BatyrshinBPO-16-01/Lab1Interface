@@ -34,7 +34,7 @@ void MainWindow::on_Arrays_clicked()
 
 void MainWindow::on_Exit_clicked()
 {
-    QMessageBox::StandardButton reply=QMessageBox::question(this, "Выход", "Вы действительно хотите выйти?", QMessageBox::Yes| QMessageBox::No);
+    QMessageBox::StandardButton reply=QMessageBox::question(this, "Выход", "Выйти из приложения?", QMessageBox::Yes| QMessageBox::No);
     if (reply == QMessageBox::Yes)
     {
         QApplication::quit();

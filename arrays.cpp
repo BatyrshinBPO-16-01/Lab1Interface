@@ -1,5 +1,7 @@
 #include "arrays.h"
 #include "ui_arrays.h"
+#include <QApplication>
+#include <QMessageBox>
 
 Arrays::Arrays(QWidget *parent) :
     QDialog(parent),
@@ -13,8 +15,15 @@ Arrays::~Arrays()
     delete ui;
 }
 
-void Arrays::on_pushButton_clicked()
+
+
+void Arrays::on_Prev_clicked()
 {
-    this->close();
-    emit firstWindow();
+
+    QMessageBox::StandardButton reply=QMessageBox::question(this, "Выход", "Выйти в главное окно?", QMessageBox::Yes| QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        this->close();
+        emit firstWindow();
+    }
 }
