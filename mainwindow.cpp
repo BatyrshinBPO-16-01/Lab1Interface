@@ -32,7 +32,7 @@ void MainWindow::on_Arrays_clicked()
     window2->show();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_Exit_clicked()
 {
     QMessageBox::StandardButton reply=QMessageBox::question(this, "Выход", "Вы действительно хотите выйти?", QMessageBox::Yes| QMessageBox::No);
     if (reply == QMessageBox::Yes)
