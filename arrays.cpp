@@ -42,7 +42,7 @@ void zapolnenie(int *matrix,int *br, int n)
 
 }
 
-double radix(int *ar, int *br, int *cr, int sizeC, int sizeAB)
+void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
 {
     clock_t start = clock();
 
@@ -57,14 +57,13 @@ double radix(int *ar, int *br, int *cr, int sizeC, int sizeAB)
         cr[i]+=cr[i-1];
     for (i = n-1; i >= 0; i--)
     {
-        d++;
+        //if ((cr % 2)==0) d++;
         br[cr[ar[i]]-1]=ar[i];
         cr[ar[i]]-=1;
     }
     clock_t end = clock();
     double seconds = (double)(end - start) / CLOCKS_PER_SEC;
 
-    return seconds;
     ui->Time->setText(QString::number( seconds ));
     ui->Sravn ->setText(QString::number( d ));
 
@@ -75,7 +74,7 @@ void Arrays::on_Run_clicked()
 {
     int *matrix, *br, *cr, n, sizeC=10;
     n = ui-> SizeofArray -> text().toInt();
-    double s;
+    //double s;
 
     matrix=new int[n];
     br=new int[n];
@@ -87,7 +86,7 @@ void Arrays::on_Run_clicked()
 
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
     {
-        radix(matrix,br,cr,sizeC,n);
+        radix(matrix,br,cr,sizeC,n, ui);
         //ui->Time->setText(QString::number( s ));
     }
 
