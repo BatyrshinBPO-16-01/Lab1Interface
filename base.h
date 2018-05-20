@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Prev_clicked();
 
+    void on_Run_clicked();
+
 signals:
     void firstWindow();
 

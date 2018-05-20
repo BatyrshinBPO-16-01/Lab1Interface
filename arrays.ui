@@ -6,32 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>425</width>
-    <height>431</height>
+    <width>404</width>
+    <height>405</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Размер массива:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="SizeofArray"/>
-     </item>
-    </layout>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="Prev">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string>Назад</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -239,18 +235,35 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="Prev">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Размер массива:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="SizeofArray"/>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QPushButton" name="Run">
      <property name="font">
       <font>
+       <family>Fixedsys</family>
        <pointsize>12</pointsize>
       </font>
      </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
      <property name="text">
-      <string>Назад</string>
+      <string>Сортировать</string>
      </property>
     </widget>
    </item>

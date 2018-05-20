@@ -21,6 +21,8 @@ signals:
 private slots:
     void on_Prev_clicked();
 
+    void on_Run_clicked();
+
 private:
     Ui::Arrays *ui;
 };

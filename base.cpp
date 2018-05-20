@@ -25,3 +25,8 @@ void Base::on_Prev_clicked()
         emit firstWindow();
     }
 }
+
+void Base::on_Run_clicked()
+{
+
+}
