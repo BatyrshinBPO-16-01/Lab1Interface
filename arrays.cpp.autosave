@@ -75,7 +75,7 @@ void Arrays::on_Run_clicked()
 {
     int *matrix, *br, *cr, n, sizeC=10;
     n = ui-> SizeofArray -> text().toInt();
-    double s;
+    //double s;
 
     matrix=new int[n];
     br=new int[n];

@@ -143,7 +143,7 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="Perestan_2"/>
+        <widget class="QLineEdit" name="PerestanNas"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_7">
@@ -158,10 +158,10 @@
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QLineEdit" name="Time_2"/>
+        <widget class="QLineEdit" name="TimeNas"/>
        </item>
        <item row="0" column="3">
-        <widget class="QLineEdit" name="Sravn_2"/>
+        <widget class="QLineEdit" name="SravnNas"/>
        </item>
       </layout>
      </widget>
@@ -202,8 +202,17 @@
        <pointsize>11</pointsize>
       </font>
      </property>
+     <property name="toolTipDuration">
+      <number>-1</number>
+     </property>
      <property name="title">
       <string>По годам</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
      </property>
      <widget class="QWidget" name="layoutWidget_5">
       <property name="geometry">
@@ -240,7 +249,7 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="Perestan_3"/>
+        <widget class="QLineEdit" name="PerestanYear"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_10">
@@ -255,10 +264,10 @@
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QLineEdit" name="Time_3"/>
+        <widget class="QLineEdit" name="TimeYear"/>
        </item>
        <item row="0" column="3">
-        <widget class="QLineEdit" name="Sravn_3"/>
+        <widget class="QLineEdit" name="SravnYear"/>
        </item>
       </layout>
      </widget>
