@@ -67,14 +67,12 @@ void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
     ui->Time->setText(QString::number( seconds ));
     ui->Sravn ->setText(QString::number( d ));
 
-    //printf("The time: %f seconds\n", seconds);
 }
 
 void Arrays::on_Run_clicked()
 {
     int *matrix, *br, *cr, n, sizeC=10;
     n = ui-> SizeofArray -> text().toInt();
-    //double s;
 
     matrix=new int[n];
     br=new int[n];
@@ -87,8 +85,17 @@ void Arrays::on_Run_clicked()
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
     {
         radix(matrix,br,cr,sizeC,n, ui);
-        //ui->Time->setText(QString::number( s ));
+
     }
 
+
+
+}
+
+void Arrays::on_pushButton_clicked()
+{
+    ui->Time->clear();
+    ui->Sravn ->clear();
+    ui->Perestan->clear();
 
 }

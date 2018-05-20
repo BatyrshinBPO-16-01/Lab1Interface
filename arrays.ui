@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="5" column="0">
+   <item row="6" column="0">
     <widget class="QPushButton" name="Prev">
      <property name="font">
       <font>
@@ -186,7 +186,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="label_2">
@@ -254,7 +254,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QPushButton" name="Run">
      <property name="font">
       <font>
@@ -264,6 +264,18 @@
      </property>
      <property name="text">
       <string>Сортировать</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Очистить поля</string>
      </property>
     </widget>
    </item>
