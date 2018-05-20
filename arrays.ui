@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>371</width>
-    <height>451</height>
+    <width>425</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="Sorts">
        <property name="font">
         <font>
          <pointsize>11</pointsize>
@@ -50,56 +50,68 @@
          <rect>
           <x>20</x>
           <y>20</y>
-          <width>141</width>
+          <width>161</width>
           <height>112</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="ShakerSort">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
-            <string>Первая</string>
+            <string>Шейкерная</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
+          <widget class="QRadioButton" name="RadixSort">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
-            <string>Вторая</string>
+            <string>Поразрядная</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_3">
+          <widget class="QRadioButton" name="LSDRadixSort">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
-            <string>Третья</string>
+            <string>Восх. поразрядная</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_4">
+          <widget class="QRadioButton" name="MergeSort">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
-            <string>Четвертая</string>
+            <string>Слиянием</string>
            </property>
           </widget>
          </item>
@@ -108,7 +120,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_2">
+      <widget class="QGroupBox" name="Situats">
        <property name="font">
         <font>
          <pointsize>11</pointsize>
@@ -128,11 +140,14 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QRadioButton" name="radioButton_5">
+          <widget class="QRadioButton" name="Medium">
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
+             <pointsize>11</pointsize>
             </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>Средний случай</string>
@@ -140,11 +155,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_7">
+          <widget class="QRadioButton" name="Low">
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
+             <pointsize>11</pointsize>
             </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>Худший случай</string>
@@ -152,11 +170,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_6">
+          <widget class="QRadioButton" name="Best">
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
+             <pointsize>11</pointsize>
             </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>Лучший случай</string>
@@ -196,7 +217,7 @@
       </widget>
      </item>
      <item row="1" column="3">
-      <widget class="QLineEdit" name="SizeofArray_3"/>
+      <widget class="QLineEdit" name="Perestan"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_4">
@@ -206,15 +227,15 @@
         </font>
        </property>
        <property name="text">
-        <string>Время</string>
+        <string>Время:</string>
        </property>
       </widget>
      </item>
      <item row="2" column="3">
-      <widget class="QLineEdit" name="SizeofArray_4"/>
+      <widget class="QLineEdit" name="Time"/>
      </item>
      <item row="0" column="3">
-      <widget class="QLineEdit" name="SizeofArray_2"/>
+      <widget class="QLineEdit" name="Sravn"/>
      </item>
     </layout>
    </item>
@@ -224,6 +245,9 @@
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
       <string>Назад</string>

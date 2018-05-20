@@ -24,6 +24,9 @@
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>База данных</string>
         </property>
@@ -35,6 +38,9 @@
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
          <string>Массив</string>
@@ -49,6 +55,9 @@
        <font>
         <pointsize>12</pointsize>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
        <string>Выход</string>

@@ -27,6 +27,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="text">
     <string>Назад</string>
    </property>
