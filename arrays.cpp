@@ -42,6 +42,40 @@ void zapolnenie(int *matrix,int *br, int n)
 
 }
 
+void swapEl(int *arr, int i)
+{
+    int buff;
+    buff = arr[i];
+    arr[i] = arr[i - 1];
+    arr[i - 1] = buff;
+}
+void ShakerSort(int *arr, int size, Ui::Arrays *ui)
+{
+    int d=0;
+    clock_t start = clock();
+    int leftMark = 1;
+    int rightMark = size - 1;
+    while (leftMark <= rightMark)
+    {
+        for (int i = rightMark; i >= leftMark; i--)
+        if (arr[i - 1] > arr[i]) swapEl(arr, i);
+        leftMark++;
+
+
+        for (int i = leftMark; i <= rightMark; i++)
+        if (arr[i - 1] > arr[i]) swapEl(arr, i);
+        rightMark--;
+
+        d++;
+    }
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+
+    ui->Time->setText(QString::number( seconds ));
+    ui->Sravn ->setText(QString::number( d ));
+
+}
+
 void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
 {
     clock_t start = clock();
@@ -83,11 +117,10 @@ void Arrays::on_Run_clicked()
     zapolnenie(matrix,br,n);
 
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
-    {
         radix(matrix,br,cr,sizeC,n, ui);
 
-    }
-
+    if ((ui->ShakerSort->isChecked())&&(ui->Medium->isChecked()))
+        ShakerSort(matrix, n, ui);
 
 
 }
