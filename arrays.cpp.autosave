@@ -30,6 +30,8 @@ void Arrays::on_Prev_clicked()
         emit firstWindow();
     }
 }
+//-------------------------------------------------------------------
+
 
 void zapolnenie(int *matrix,int *br,int n, int size)
 {

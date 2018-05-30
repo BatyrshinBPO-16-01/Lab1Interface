@@ -23,10 +23,6 @@ private slots:
 
     void on_Run_clicked();
 
-    //void radix();
-
-    void on_pushButton_clicked();
-
 private:
     Ui::Arrays *ui;
 };
