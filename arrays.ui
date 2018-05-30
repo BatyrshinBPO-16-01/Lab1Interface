@@ -275,7 +275,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Первые и последние 5 элементов до:</string>
+        <string>Нач. и конеч. 5 элем. до:</string>
        </property>
       </widget>
      </item>

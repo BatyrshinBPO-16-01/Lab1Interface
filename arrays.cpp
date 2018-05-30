@@ -30,6 +30,47 @@ void Arrays::on_Prev_clicked()
         emit firstWindow();
     }
 }
+//-------------------------------------------------------------------
+
+void LowA(int *arr1,int *matrix, int n)
+{
+    int temp;
+    for (int i = 0; i < n; i++)
+        arr1[i]=matrix[i];
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n ; j++)
+        {
+            if (arr1[j] > arr1[i])
+            {
+                temp = arr1[j];
+                arr1[j] = arr1[i];
+                arr1[i] = temp;
+            }
+         }
+     }
+}
+
+void BestA(int *arr2,int *matrix, int n)
+{
+    int temp;
+    for (int i = 0; i < n; i++)
+        arr2[i]=matrix[i];
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n ; j++)
+        {
+            if (arr2[j] < arr2[i])
+            {
+                temp = arr2[j];
+                arr2[j] = arr2[i];
+                arr2[i] = temp;
+            }
+         }
+     }
+}
 
 void zapolnenie(int *matrix,int *br,int n, int size)
 {
@@ -51,7 +92,25 @@ void swapEl(int *arr, int i,int &p)
 
 void ShakerSort(int *arr, int size, Ui::Arrays *ui)
 {
-    int d=0,p=0;
+    ui->First10->clear();
+    ui->Last10->clear();
+
+    int d=0,p=0,i;
+    for(i=0; i<size; i++)
+    {
+        if (i<5)
+        {
+            ui->First10->insertPlainText(QString::number(arr[i]));
+            ui->First10->insertPlainText("  ");
+        }
+        if (i==size-7) ui->First10->insertPlainText("| ");
+        if (i>size-6)
+        {
+            ui->First10->insertPlainText(QString::number(arr[i]));
+            ui->First10->insertPlainText("  ");
+        }
+    }
+
     clock_t start = clock();
     int leftMark = 1;
     int rightMark = size - 1;
@@ -76,6 +135,21 @@ void ShakerSort(int *arr, int size, Ui::Arrays *ui)
     clock_t end = clock();
     double seconds = (double)(end - start) / CLOCKS_PER_SEC;
 
+    for(i=0; i<size; i++)
+    {
+        if (i<5)
+        {
+            ui->Last10->insertPlainText(QString::number(arr[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+        if (i==size-7) ui->Last10->insertPlainText("| ");
+        if (i>size-6)
+        {
+            ui->Last10->insertPlainText(QString::number(arr[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+    }
+
     ui->Time->setText(QString::number( seconds ));
     ui->Sravn ->setText(QString::number( d ));
     ui->Perestan->setText(QString::number( p ));
@@ -95,13 +169,13 @@ void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
     {
         if (i<5)
         {
-            ui->First10->insertPlainText(QString::number(br[i]));
+            ui->First10->insertPlainText(QString::number(ar[i]));
             ui->First10->insertPlainText("  ");
         }
         if (i==n-7) ui->First10->insertPlainText("| ");
         if (i>n-6)
         {
-            ui->First10->insertPlainText(QString::number(br[i]));
+            ui->First10->insertPlainText(QString::number(ar[i]));
             ui->First10->insertPlainText("  ");
         }
     }
@@ -144,21 +218,39 @@ void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
 
 void Arrays::on_Run_clicked()
 {
-    int *matrix, *br, *cr, n, size=100;
+    int *matrix,*arr1,*arr2, *br, *cr, n, size=100;
     n = ui-> SizeofArray -> text().toInt();
     srand(time(0));
 
     matrix=new int[n];
     br=new int[n];
     cr=new int[size];
+    arr1=new int[n];
+    arr2=new int[n];
 
     zapolnenie(matrix,br,n,size);
+
+    LowA(arr1,matrix,n);
+    BestA(arr2,matrix,n);
+
+
+
+    if ((ui->ShakerSort->isChecked())&&(ui->Medium->isChecked()))
+        ShakerSort(matrix, n, ui);
+    if ((ui->ShakerSort->isChecked())&&(ui->Low->isChecked()))
+        ShakerSort(arr1, n, ui);
+    if ((ui->ShakerSort->isChecked())&&(ui->Best->isChecked()))
+        ShakerSort(arr2, n, ui);
+
 
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
         radix(matrix,br,cr,size,n, ui);
 
-    if ((ui->ShakerSort->isChecked())&&(ui->Medium->isChecked()))
-        ShakerSort(matrix, n, ui);
+    if ((ui->RadixSort->isChecked())&&(ui->Low->isChecked()))
+        radix(arr1,br,cr,size,n, ui);
+
+    if ((ui->RadixSort->isChecked())&&(ui->Best->isChecked()))
+        radix(arr2,br,cr,size,n, ui);
 
 
 }
