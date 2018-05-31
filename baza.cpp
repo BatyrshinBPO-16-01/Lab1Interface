@@ -27,7 +27,8 @@ Baza::~Baza()
 {
     delete ui;
 }
-typedef struct gorod{
+typedef struct gorod
+{
    string name;
    int god;
    int naselenie;
@@ -299,7 +300,7 @@ void Baza::on_pushButton_clicked()
         }
 }
 
-void Baza::on_piramida_clicked()
+void on_piramida(Ui::Baza *ui)
 {
     double seconds=0;
     int pers=0;
@@ -337,7 +338,7 @@ void Baza::on_piramida_clicked()
                 fin.close();
 }
 
-void Baza::on_quick_clicked()
+void on_quick(Ui::Baza *ui)
 {
     double seconds=0;
     int pers=0;
@@ -350,8 +351,9 @@ void Baza::on_quick_clicked()
             fout2.open("GorodaSortedNaselenie.txt");
             fin.open("Goroda.txt");
             struct gorod g[M];
-            for(int i=0;i<M;++i){
-            fin >> g[i].name>> g[i].naselenie >> g[i].god;
+            for(int i=0;i<M;++i)
+            {
+                fin >> g[i].name>> g[i].naselenie >> g[i].god;
             }
                 time_t start, end;
                 start = clock();
@@ -382,7 +384,7 @@ void Baza::on_quick_clicked()
                 fin.close();
 }
 
-void Baza::on_bub_clicked()
+void on_bub(Ui::Baza *ui)
 {
     double seconds=0;
     int pers=0;
@@ -420,7 +422,7 @@ void Baza::on_bub_clicked()
                 fin.close();
 }
 
-void Baza::on_shake_clicked()
+void on_shake(Ui::Baza *ui)
 {
     double seconds=0;
     int pers=0;
@@ -456,4 +458,16 @@ void Baza::on_shake_clicked()
                 fout1.close();
                 fout2.close();
                 fin.close();
+}
+
+void Baza::on_pushButton_2_clicked()
+{
+    if (ui->QuickSort->isChecked())
+        on_quick(ui);
+    if (ui->ShakeSort->isChecked())
+        on_shake(ui);
+    if (ui->RadixSort->isChecked())
+        on_bub(ui);
+    if (ui->HeapSort->isChecked())
+        on_piramida(ui);
 }

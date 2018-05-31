@@ -19,13 +19,7 @@ signals:
 private slots:
     void on_pushButton_clicked();
 
-    void on_piramida_clicked();
-
-    void on_quick_clicked();
-
-    void on_bub_clicked();
-
-    void on_shake_clicked();
+    void on_pushButton_2_clicked();
 
 private:
     Ui::Baza *ui;
