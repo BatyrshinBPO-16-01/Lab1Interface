@@ -216,6 +216,96 @@ void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
 
 }
 
+void Merge(int *a, int n, Ui::Arrays *ui)
+{
+    ui->First10->clear();
+    ui->Last10->clear();
+
+    for(int i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->First10->insertPlainText(QString::number(a[i]));
+            ui->First10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->First10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->First10->insertPlainText(QString::number(a[i]));
+            ui->First10->insertPlainText("  ");
+        }
+    }
+
+    int mid = n / 2, h = 1,step,d=0,p=0;
+    if (n % 2 == 1)
+        mid++;
+
+    int *c = new int[n];
+    clock_t start = clock();
+    while (h < n)
+    {
+        step = h;
+        int i = 0;
+        int j = mid;
+        int k = 0;
+        while (step <= mid)
+        {
+            while ((i < step) && (j < n) && (j < (mid + step)))
+            {
+                if (a[i] < a[j])
+                {
+                    c[k] = a[i];
+                    i++; k++;
+                }
+                else
+                {
+                    c[k] = a[j];
+                    j++; k++;
+                }
+            }
+
+            while (i < step)
+            {
+                c[k] = a[i];
+                i++; k++;
+            }
+            while ((j < (mid + step)) && (j<n))
+            {
+                c[k] = a[j];
+                j++; k++;
+            }
+            step = step + h;
+        }
+
+        h = h * 2;
+        for (i = 0; i<n; i++)
+            a[i] = c[i];
+    }
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+
+    ui->Time->setText(QString::number( seconds ));
+    ui->Sravn ->setText(QString::number( d ));
+    ui->Perestan->setText(QString::number( p ));
+
+    for(int i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->Last10->insertPlainText(QString::number(a[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->Last10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->Last10->insertPlainText(QString::number(a[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+    }
+
+    delete c[];
+}
+
 void Arrays::on_Run_clicked()
 {
     int *matrix,*arr1,*arr2, *br, *cr, n, size=100;
@@ -233,8 +323,6 @@ void Arrays::on_Run_clicked()
     LowA(arr1,matrix,n);
     BestA(arr2,matrix,n);
 
-
-
     if ((ui->ShakerSort->isChecked())&&(ui->Medium->isChecked()))
         ShakerSort(matrix, n, ui);
     if ((ui->ShakerSort->isChecked())&&(ui->Low->isChecked()))
@@ -242,15 +330,19 @@ void Arrays::on_Run_clicked()
     if ((ui->ShakerSort->isChecked())&&(ui->Best->isChecked()))
         ShakerSort(arr2, n, ui);
 
-
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
         radix(matrix,br,cr,size,n, ui);
-
     if ((ui->RadixSort->isChecked())&&(ui->Low->isChecked()))
         radix(arr1,br,cr,size,n, ui);
-
     if ((ui->RadixSort->isChecked())&&(ui->Best->isChecked()))
         radix(arr2,br,cr,size,n, ui);
+
+    if ((ui->MergeSort->isChecked())&&(ui->Medium->isChecked()))
+        Merge(matrix,n, ui);
+    if ((ui->MergeSort->isChecked())&&(ui->Low->isChecked()))
+        Merge(arr1,n, ui);
+    if ((ui->MergeSort->isChecked())&&(ui->Best->isChecked()))
+        Merge(arr2,n, ui);
 
     delete []matrix;
     delete []arr1;
