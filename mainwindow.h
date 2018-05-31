@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "base.h"
+#include "baza.h"
 #include "arrays.h"
 
 namespace Ui {
@@ -26,7 +26,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Base *window1;
+    Baza *window1;
     Arrays *window2;
 };
 

@@ -19,8 +19,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_BaseOfData_clicked()
 {
     hide();
-    window1 = new Base(this);
-    connect(window1, &Base::firstWindow, this, &MainWindow::show);
+    window1 = new Baza(this);
+    connect(window1, &Baza::firstWindow, this, &MainWindow::show);
     window1->show();
 }
 
