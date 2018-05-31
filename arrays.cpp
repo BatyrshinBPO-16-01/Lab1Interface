@@ -252,5 +252,9 @@ void Arrays::on_Run_clicked()
     if ((ui->RadixSort->isChecked())&&(ui->Best->isChecked()))
         radix(arr2,br,cr,size,n, ui);
 
-
+    delete []matrix;
+    delete []arr1;
+    delete []arr2;
+    delete []br;
+    delete []cr;
 }
