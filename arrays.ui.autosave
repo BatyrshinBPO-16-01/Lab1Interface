@@ -3,7 +3,7 @@
  <class>Arrays</class>
  <widget class="QDialog" name="Arrays">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>

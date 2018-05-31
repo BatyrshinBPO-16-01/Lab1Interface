@@ -252,27 +252,30 @@ void Merge(int *a, int n, Ui::Arrays *ui)
         {
             while ((i < step) && (j < n) && (j < (mid + step)))
             {
+                d++;
                 if (a[i] < a[j])
                 {
                     c[k] = a[i];
-                    i++; k++;
+                    i++; k++; p++;
                 }
                 else
                 {
                     c[k] = a[j];
-                    j++; k++;
+                    j++; k++; p++;
                 }
             }
 
             while (i < step)
             {
+                d++;
                 c[k] = a[i];
-                i++; k++;
+                i++; k++; p++;
             }
             while ((j < (mid + step)) && (j<n))
             {
+                d++;
                 c[k] = a[j];
-                j++; k++;
+                j++; k++; p++;
             }
             step = step + h;
         }
@@ -281,6 +284,7 @@ void Merge(int *a, int n, Ui::Arrays *ui)
         for (i = 0; i<n; i++)
             a[i] = c[i];
     }
+
     clock_t end = clock();
     double seconds = (double)(end - start) / CLOCKS_PER_SEC;
 
