@@ -303,7 +303,7 @@ void Merge(int *a, int n, Ui::Arrays *ui)
         }
     }
 
-    delete c[];
+    delete []c;
 }
 
 void Arrays::on_Run_clicked()
