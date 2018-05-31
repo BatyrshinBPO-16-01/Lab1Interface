@@ -9,6 +9,10 @@
 #include <conio.h>
 #include <stdio.h>
 
+#define LeftChild(i) (2*(i)+1)
+#define GT(a,b)(a>b)
+#define LT(a,b)(a<b)
+
 Arrays::Arrays(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Arrays)
@@ -209,79 +213,6 @@ void Radix(int *ar, int *br, int sizeC, int sizeAB, Ui::Arrays *ui)
         }
     }
 }
-
-void LSDRadix(int *arr, int n, Ui::Arrays *ui)
-{
-    int i, j, temp,  c[n],k=0, d=0, p=0, m;
-
-    ui->First10->clear();
-    ui->Last10->clear();
-
-    for(i=0; i<n; i++)
-    {
-        if (i<5)
-        {
-            ui->First10->insertPlainText(QString::number(arr[i]));
-            ui->First10->insertPlainText("  ");
-        }
-        if (i==n-7) ui->First10->insertPlainText("| ");
-        if (i>n-6)
-        {
-            ui->First10->insertPlainText(QString::number(arr[i]));
-            ui->First10->insertPlainText("  ");
-        }
-    }
-
-    clock_t start = clock();
-    while(k==2)
-    {
-        for(i=0; i<n; i++)
-        {
-            temp=(int(arr[i]*pow(10,-k))%(10));
-            for(j=i; j<n; j++)
-            {
-                if ((int(arr[j]*pow(10,-k))%(10))<temp)
-                {
-                    temp=arr[j];
-                    m=j;
-                }
-            }
-            c[i]=temp;
-
-            temp=arr[i];
-            arr[i]=arr[m];
-            arr[m]=temp;
-
-        }
-        k++;
-
-        for(i=0; i<n; i++)
-            arr[i]=c[i];
-
-    }
-    clock_t end = clock();
-    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
-
-    ui->Time->setText(QString::number( seconds ));
-    ui->Sravn ->setText(QString::number( d ));
-    ui->Perestan->setText(QString::number( p ));
-
-    for(i=0; i<n; i++)
-    {
-        if (i<5)
-        {
-            ui->Last10->insertPlainText(QString::number(arr[i]));
-            ui->Last10->insertPlainText("  ");
-        }
-        if (i==n-7) ui->Last10->insertPlainText("| ");
-        if (i>n-6)
-        {
-            ui->Last10->insertPlainText(QString::number(arr[i]));
-            ui->Last10->insertPlainText("  ");
-        }
-    }
-}
-
 void quickSort(int *a ,int l, int r, int &srav, int &pers)
 {
    int w,x,i,j;
@@ -304,7 +235,6 @@ void quickSort(int *a ,int l, int r, int &srav, int &pers)
    if (l<j) quickSort(a,l,j,srav,pers);
    if (i<r) quickSort(a,i,r,srav,pers);
 }
-
 void QuickSort(int *arr, int n, Ui::Arrays *ui)
 {
     ui->First10->clear();
@@ -353,6 +283,91 @@ void QuickSort(int *arr, int n, Ui::Arrays *ui)
     }
 }
 
+void Swap1(int &a, int &b)
+{
+    int tmp;
+    tmp = a;
+    a = b;
+    b = tmp;
+}
+void Percdown(int *a, int i, int n, int &d, int &p)
+{
+    int Child, tmp;
+    for (tmp = a[i]; LeftChild(i) < n; i = Child)
+    {
+        Child = LeftChild(i);
+        d+=1;
+        if (Child != n-1 && GT(a[Child + 1], a[Child]))
+            Child++;
+        d+=1;
+        if (LT (tmp,a[Child]))
+        {
+            p+=1;
+            a[i] = a[Child];
+        }
+        else
+            break;
+    }
+    p+=1;
+    a[i] = tmp;
+}
+
+void HeapSort(int *a, int n, Ui::Arrays *ui){
+
+    ui->First10->clear();
+    ui->Last10->clear();
+
+    int i, d=0, p=0;
+
+    for(i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->First10->insertPlainText(QString::number(a[i]));
+            ui->First10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->First10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->First10->insertPlainText(QString::number(a[i]));
+            ui->First10->insertPlainText("  ");
+        }
+    }
+
+    clock_t start = clock();
+    for (i = n/2; i >= 0; i--)
+        Percdown(a,i,n,d,p);
+    for (i = n - 1; i > 0; i--)
+    {
+        p+=1;
+        Swap1(a[0],a[i]);
+        Percdown(a,0,i,d,p);
+    }
+
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+
+    ui->Time->setText(QString::number( seconds ));
+    ui->Sravn ->setText(QString::number( d ));
+    ui->Perestan->setText(QString::number( p ));
+
+    for(i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->Last10->insertPlainText(QString::number(a[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->Last10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->Last10->insertPlainText(QString::number(a[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+    }
+
+}
+
 void Arrays::on_Run_clicked()
 {
     int *matrix,*arr1,*arr2, *br, n, size=100;
@@ -385,6 +400,18 @@ void Arrays::on_Run_clicked()
 
     if ((ui->QuickSort->isChecked())&&(ui->Medium->isChecked()))
         QuickSort(matrix,n,ui);
+    if ((ui->QuickSort->isChecked())&&(ui->Low->isChecked()))
+        QuickSort(arr1,n,ui);
+    if ((ui->QuickSort->isChecked())&&(ui->Best->isChecked()))
+        QuickSort(arr2,n,ui);
+
+    if ((ui->HeapSort->isChecked())&&(ui->Medium->isChecked()))
+        HeapSort(matrix,n,ui);
+    if ((ui->HeapSort->isChecked())&&(ui->Low->isChecked()))
+        HeapSort(arr1,n,ui);
+    if ((ui->HeapSort->isChecked())&&(ui->Best->isChecked()))
+        HeapSort(arr2,n,ui);
+
 
     delete []matrix;
     delete []br;

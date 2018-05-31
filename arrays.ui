@@ -116,7 +116,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="MergeSort">
+          <widget class="QRadioButton" name="HeapSort">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -126,7 +126,7 @@
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>Слиянием</string>
+            <string>Пирамидальная</string>
            </property>
           </widget>
          </item>
