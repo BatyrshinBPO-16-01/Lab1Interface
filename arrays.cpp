@@ -214,6 +214,77 @@ void Radix(int *ar, int *br, int sizeC, int sizeAB, Ui::Arrays *ui)
     }
 }
 
+void LSDRadix(int *arr, int n, Ui::Arrays *ui)
+{
+    int i, j, temp,  c[n],k=0, d=0, p=0, m;
+
+    ui->First10->clear();
+    ui->Last10->clear();
+
+    for(i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->First10->insertPlainText(QString::number(arr[i]));
+            ui->First10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->First10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->First10->insertPlainText(QString::number(arr[i]));
+            ui->First10->insertPlainText("  ");
+        }
+    }
+
+    clock_t start = clock();
+    while(k==2)
+    {
+        for(i=0; i<n; i++)
+        {
+            temp=(int(arr[i]*pow(10,-k))%(10));
+            for(j=i; j<n; j++)
+            {
+                if ((int(arr[j]*pow(10,-k))%(10))<temp)
+                {
+                    temp=arr[j];
+                    m=j;
+                }
+            }
+            c[i]=temp;
+
+            temp=arr[i];
+            arr[i]=arr[m];
+            arr[m]=temp;
+
+        }
+        k++;
+
+        for(i=0; i<n; i++)
+            arr[i]=c[i];
+
+    }
+    clock_t end = clock();
+    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+
+    ui->Time->setText(QString::number( seconds ));
+    ui->Sravn ->setText(QString::number( d ));
+    ui->Perestan->setText(QString::number( p ));
+
+    for(i=0; i<n; i++)
+    {
+        if (i<5)
+        {
+            ui->Last10->insertPlainText(QString::number(arr[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+        if (i==n-7) ui->Last10->insertPlainText("| ");
+        if (i>n-6)
+        {
+            ui->Last10->insertPlainText(QString::number(arr[i]));
+            ui->Last10->insertPlainText("  ");
+        }
+    }
+}
 
 void Arrays::on_Run_clicked()
 {
@@ -244,6 +315,9 @@ void Arrays::on_Run_clicked()
         Radix(arr1,br,size,n, ui);
     if ((ui->RadixSort->isChecked())&&(ui->Best->isChecked()))
         Radix(arr2,br,size,n, ui);
+
+    if ((ui->LSDRadixSort->isChecked())&&(ui->Medium->isChecked()))
+        LSDRadix(matrix,n, ui);
 
     delete []matrix;
     delete []br;
