@@ -30,8 +30,9 @@ void Arrays::on_Prev_clicked()
         emit firstWindow();
     }
 }
-//-------------------------------------------------------------------
 
+
+//-------------------------------------------------------------------
 void LowA(int *arr1,int *matrix, int n)
 {
     int temp;
@@ -51,7 +52,6 @@ void LowA(int *arr1,int *matrix, int n)
          }
      }
 }
-
 void BestA(int *arr2,int *matrix, int n)
 {
     int temp;
@@ -71,7 +71,6 @@ void BestA(int *arr2,int *matrix, int n)
          }
      }
 }
-
 void zapolnenie(int *matrix,int *br,int n, int size)
 {
     for(int i=0; i<n; i++)
@@ -80,7 +79,6 @@ void zapolnenie(int *matrix,int *br,int n, int size)
         br[i]=matrix[i];
     }
 }
-
 void swapEl(int *arr, int i,int &p)
 {
     int buff;
@@ -156,13 +154,14 @@ void ShakerSort(int *arr, int size, Ui::Arrays *ui)
 
 }
 
-void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
+void Radix(int *ar, int *br, int sizeC, int sizeAB, Ui::Arrays *ui)
 {
     ui->First10->clear();
     ui->Last10->clear();
+
     clock_t start = clock();
 
-    int i,k,n,d=0,p=0;
+    int i,k,n, d=0, p=0, cr[sizeC];
     k = sizeC;
     n = sizeAB;
     for(i=0; i<n; i++)
@@ -213,112 +212,17 @@ void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB, Ui::Arrays *ui)
             ui->Last10->insertPlainText("  ");
         }
     }
-
 }
 
-void Merge(int *a, int n, Ui::Arrays *ui)
-{
-    ui->First10->clear();
-    ui->Last10->clear();
-
-    for(int i=0; i<n; i++)
-    {
-        if (i<5)
-        {
-            ui->First10->insertPlainText(QString::number(a[i]));
-            ui->First10->insertPlainText("  ");
-        }
-        if (i==n-7) ui->First10->insertPlainText("| ");
-        if (i>n-6)
-        {
-            ui->First10->insertPlainText(QString::number(a[i]));
-            ui->First10->insertPlainText("  ");
-        }
-    }
-
-    int mid = n / 2, h = 1,step,d=0,p=0;
-    if (n % 2 == 1)
-        mid++;
-
-    int *c = new int[n];
-    clock_t start = clock();
-    while (h < n)
-    {
-        step = h;
-        int i = 0;
-        int j = mid;
-        int k = 0;
-        while (step <= mid)
-        {
-            while ((i < step) && (j < n) && (j < (mid + step)))
-            {
-                d++;
-                if (a[i] < a[j])
-                {
-                    c[k] = a[i];
-                    i++; k++; p++;
-                }
-                else
-                {
-                    c[k] = a[j];
-                    j++; k++; p++;
-                }
-            }
-
-            while (i < step)
-            {
-                d++;
-                c[k] = a[i];
-                i++; k++; p++;
-            }
-            while ((j < (mid + step)) && (j<n))
-            {
-                d++;
-                c[k] = a[j];
-                j++; k++; p++;
-            }
-            step = step + h;
-        }
-
-        h = h * 2;
-        for (i = 0; i<n; i++)
-            a[i] = c[i];
-    }
-
-    clock_t end = clock();
-    double seconds = (double)(end - start) / CLOCKS_PER_SEC;
-
-    ui->Time->setText(QString::number( seconds ));
-    ui->Sravn ->setText(QString::number( d ));
-    ui->Perestan->setText(QString::number( p ));
-
-    for(int i=0; i<n; i++)
-    {
-        if (i<5)
-        {
-            ui->Last10->insertPlainText(QString::number(a[i]));
-            ui->Last10->insertPlainText("  ");
-        }
-        if (i==n-7) ui->Last10->insertPlainText("| ");
-        if (i>n-6)
-        {
-            ui->Last10->insertPlainText(QString::number(a[i]));
-            ui->Last10->insertPlainText("  ");
-        }
-    }
-
-    delete []c;
-}
 
 void Arrays::on_Run_clicked()
 {
-    int *matrix,*arr1,*arr2, *br, *cr, n, size=100;
+    int *matrix,*arr1,*arr2, *br, n, size=100;
     n = ui-> SizeofArray -> text().toInt();
     srand(time(0));
 
     matrix=new int[n];
     br=new int[n];
-    cr=new int[size];
     arr1=new int[n];
     arr2=new int[n];
 
@@ -335,22 +239,14 @@ void Arrays::on_Run_clicked()
         ShakerSort(arr2, n, ui);
 
     if ((ui->RadixSort->isChecked())&&(ui->Medium->isChecked()))
-        radix(matrix,br,cr,size,n, ui);
+        Radix(matrix,br,size,n, ui);
     if ((ui->RadixSort->isChecked())&&(ui->Low->isChecked()))
-        radix(arr1,br,cr,size,n, ui);
+        Radix(arr1,br,size,n, ui);
     if ((ui->RadixSort->isChecked())&&(ui->Best->isChecked()))
-        radix(arr2,br,cr,size,n, ui);
-
-    if ((ui->MergeSort->isChecked())&&(ui->Medium->isChecked()))
-        Merge(matrix,n, ui);
-    if ((ui->MergeSort->isChecked())&&(ui->Low->isChecked()))
-        Merge(arr1,n, ui);
-    if ((ui->MergeSort->isChecked())&&(ui->Best->isChecked()))
-        Merge(arr2,n, ui);
+        Radix(arr2,br,size,n, ui);
 
     delete []matrix;
+    delete []br;
     delete []arr1;
     delete []arr2;
-    delete []br;
-    delete []cr;
 }

@@ -3,14 +3,14 @@
  <class>Arrays</class>
  <widget class="QDialog" name="Arrays">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>493</width>
-    <height>477</height>
+    <width>386</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,6 +40,18 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QGroupBox" name="Sorts">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>150</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>190</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <pointsize>11</pointsize>
@@ -269,7 +281,7 @@
     </widget>
    </item>
    <item row="5" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label_5">
        <property name="font">
@@ -278,7 +290,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Нач. и конеч. 5 элем. до:</string>
+        <string>Начальные и конечные 5 элем. массива до:</string>
        </property>
       </widget>
      </item>
@@ -295,20 +307,7 @@
     </layout>
    </item>
    <item row="6" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>180</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
       <widget class="QLabel" name="label_6">
        <property name="font">
@@ -317,7 +316,7 @@
         </font>
        </property>
        <property name="text">
-        <string>после:</string>
+        <string>Начальные и конечные 5 элем. массива после: </string>
        </property>
       </widget>
      </item>
